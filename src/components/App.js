@@ -6,6 +6,18 @@ import "../bootstrap.min.css";
 
 import "./App.css";
 
+const dateMeetPaula = new Date("2/15/2014 21:15:00");
+
+let dateNow = new Date();
+let time = new Date(Math.abs(dateNow.getTime() - dateMeetPaula.getTime()));
+
+let Syears = time.getFullYear() - 1970;
+let Smonth = time.getMonth();
+let Sdays = time.getDate();
+let Shours = time.getHours();
+let Smins = time.getMinutes();
+let Sseconds = time.getSeconds();
+
 class Countdown extends Component {
   state = {
     years: "",
@@ -17,14 +29,10 @@ class Countdown extends Component {
   };
 
   getDate = () => {
-    const dateMeetPaula = new Date("2/15/2014 21:15:00");
+    dateNow = new Date();
+    time = new Date(Math.abs(dateNow.getTime() - dateMeetPaula.getTime()));
 
-    const dateNow = new Date();
-    const time = new Date(
-      Math.abs(dateNow.getTime() - dateMeetPaula.getTime())
-    );
-
-    //Time calculations
+    // Time calculations
     return this.setState({
       years: time.getFullYear() - 1970,
       month: time.getMonth(),
@@ -35,8 +43,13 @@ class Countdown extends Component {
     });
   };
 
+  setTime = () => {
+    const time = this.getDate();
+    this.setState({ time });
+  };
+
   componentDidMount() {
-    setInterval(this.getDate, 1000);
+    setInterval(this.setTime, 1000);
   }
 
   render() {
@@ -48,27 +61,27 @@ class Countdown extends Component {
           <p>Razem od:</p>
           <div className="countdown row">
             <div className="item">
-              {years}
+              {years ? years : Syears}
               <span>Lat</span>
             </div>
             <div className="item">
-              {month}
+              {month ? month : Smonth}
               <span>Miesięcy</span>
             </div>
             <div className="item">
-              {days}
+              {days ? days : Sdays}
               <span>Dni</span>
             </div>
             <div className="item">
-              {hours}
+              {hours ? hours : Shours}
               <span>Godzin</span>
             </div>
             <div className="item">
-              {mins}
+              {mins ? mins : Smins}
               <span>Minut</span>
             </div>
             <div className="item">
-              {seconds}
+              {seconds ? seconds : Sseconds}
               <span>Sekund</span>
             </div>
           </div>
