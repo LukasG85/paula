@@ -100,6 +100,7 @@ const CounterWrapper = styled.div`
   background-image: url(${imagePhone});
   background-position: center;
   background-size: cover;
+  font-family: "Robot", sans-serif;
   @media (min-width: 576px) {
     background-image: url(${image});
   }
@@ -117,10 +118,14 @@ const CounterWrapper = styled.div`
 
   .comingsoon {
     margin-top: 3rem;
-    font-size: 50px;
-    p {
-      font-size: 20px;
+    font-size: 40px;
+
+    @media (min-width: 576px) {
+      font-size: 50px;
     }
+  }
+  p {
+    font-size: 30px;
   }
 
   .countdown {
@@ -129,7 +134,6 @@ const CounterWrapper = styled.div`
     grid-gap: 10px;
     grid-template-columns: repeat(3, 80px);
     font-size: 30px;
-    overflow: hidden;
     margin: 0;
 
     @media (min-width: 350px) {
