@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import image from "../images/paula.jpg";
+import imagePhone from "../images/paulaPhone.jpg";
 import "../bootstrap.min.css";
 
 import "./App.css";
@@ -83,9 +84,13 @@ const CounterWrapper = styled.div`
   position: relative;
   height: 100vh;
   width: 100vw;
-  background-image: url(${image});
+  background-image: url(${imagePhone});
   background-position: center;
   background-size: cover;
+  @media (min-width: 576px) {
+    background-image: url(${image});
+  }
+
   .landing-inner {
     position: absolute;
     top: 0;
